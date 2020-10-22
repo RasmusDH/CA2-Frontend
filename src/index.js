@@ -1,7 +1,7 @@
 import "./style.css"
 import "bootstrap/dist/css/bootstrap.css"
 import "./jokeFacade"
-import jokeFacade from "./jokeFacade"
+import personFacade from "./personFacade"
 
 document.getElementById("all-content").style.display = "block"
 
@@ -10,7 +10,7 @@ document.getElementById("all-content").style.display = "block"
 */
 
 /* JS For Search */
-/*
+
 function makePersonsTable(){
   personFacade.getAllPersons()
   .then(data => {

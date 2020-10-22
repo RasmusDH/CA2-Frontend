@@ -1,6 +1,7 @@
 
 const URL = "https://ditlevsoftware.com/ca2/api/person";
 
+
 function makeOptions(method, body) {
     var opts =  {
       method: method,
@@ -24,10 +25,10 @@ function handleHttpErrors(res){
 }
 
 function getAllPersons(){
-    return fetch(URL + "/all")
+    return fetch(URL + "all")
         .then(handleHttpErrors)
 }
-/*
+
 function addPerson(person){
     const options = makeOptions("POST", person)
     return fetch(URL, options)
@@ -45,14 +46,12 @@ function editPerson(person){
     return fetch(URL + person.id, options)
     .then(handleHttpErrors)
 }
-*/
+
 const personFacade = {
     getAllPersons,
-    /*
     addPerson,
     deletePerson,
     editPerson,
-    */
 }
 
    

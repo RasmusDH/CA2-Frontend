@@ -15,81 +15,228 @@
   -->
   <div id="all-content" style="display: none;">
     <ul id="menu" class="header">
-      <li><a href="" id="about">About</a></li>
-      <li><a href="" id="ex1">Ex1</a></li>
-      <li><a href="" id="ex2">Ex2</a></li>
-      <li><a href="" id="ex3">Ex3</a></li>
+      <li><a href="" id="home">Home</a></li>
+      <li><a href="" id="search">Search Information</a></li>
     </ul>
 
     <div class="content">
 
-      <!-- This is were you should place your basic HTML for exercise-1 -->
-      <div id="ex1_html" style="display:none;">
-        <h3>Exercise 1</h3>
-        <p>Add your basic HTML for Exercise 1 here</p>
-        <ul id="jokes"></ul>
+      <!-- This is were you should place your basic HTML for Search Info -->
+      <div id="search_html" style="display:none;">
+        <h3>Information Search</h3>
+        <p>Here you can search for people and their infomation by entering several search criterias.</p>
 
-      </div>
-      <!-- End of HTML for exercise-1 -->
-
-
-
-      <!-- This is were you should place your basic HTML for exercise-2 -->
-      <div id="ex2_html" style="display:none;">
-        <h3>Exercise 2</h3>
-        <p id="ex2p">Add your basic HTML for Exercise 2 here</p>
-      </div>
-      <!-- End of HTML for exercise-2 -->
-
-
-      <!-- This is were you should place your basic HTML for exercise-3 -->
-      <div id="ex3_html" style="display:none;">
-        <h3>Ex-3</h3>
-        <p>Add your basic HTML for Exercise 3 here</p>
-
-        <div class="row" style="min-height: 5em;"">
-      <div class=" col-md-8 pre-scrollable" style="background-color: lightgrey;">
-          <h5>All Users</h5>
-          <table class="table">
+        <h2>All Persons</h2>
+        <div style="min-height: 200px;">
+          <table class="table" style="width: 90%">
             <thead>
               <tr>
-                <th>Id</th>
-                <th>Age</th>
-                <th>Name
-                <th>
-                <th>Gender</th>
-                <th>Email </th>
+                <td>ID</td>
+                <td>First Name</td>
+                <td>Last name</td>
+                <td>Phone</td>
+                <td>Street</td>
+                <td>Zip</td>
+                <td>City</td>
+              </tr>
             </thead>
-            <tbody id="allUserRows">
-            <tbody>
+            <tbody id="tbody"></tbody>
           </table>
         </div>
-        <div class="col-md-4" style="background-color: powderblue;">
-          <h5>Find User</h5>
-        </div>
-      </div>
-      <div class="row" style="min-height: 5em;">
-        <div class="col-md-4" style="background-color: powderblue;">
-          <h5>Add User</h5>
-        </div>
-        <div class="col-md-4" style="background-color: lightgrey;">
-          <h5>Edit User</h5>
-        </div>
-        <div class="col-md-4" style="background-color: powderblue;">
-          <h5>Delete User</h5>
-        </div>
-      </div>
-      <!-- </div> -->
-      <!-- End of HTML for exercise-3 -->
 
-      <!---- HTML for the About page -->
-      <div id="about_html" style="display:none;">
-        <h3>About</h3>
-        <p>Watch the small video given as intro to this code, BEFORE you start using it</p>
+      <button type="button" id="reload" class="btn btn-secondary">Reload Data</button>
+
+      <button type="button" id="addPerson" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+        Add New Person
+      </button>
+
+      <button type="button" id="deletePerson" class="btn btn-danger" data-toggle="modal" data-target="#myDeleteModal">
+        Delete Person
+      </button>
+
+      <button type="button" id="editPerson" class="btn btn-info" data-toggle="modal" data-target="#myEditModal">
+        Edit Person
+      </button>
+
+      <div id="error" style="width: 50%;margin-top:10px;"></div>
+
+
+
+      <!-- Modal Add Person -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div id="header" class="modal-header">
+
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="id">
+              <div class="form-group">
+                <label for="firstname">First Name</label>
+                <input type="text" class="form-control" id="firstname">
+              </div>
+              <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input type="text" class="form-control" name="lastname" id="lastname">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" name="phone" id="phone">
+              </div>
+              <div class="form-group">
+                <label for="street">Street</label>
+                <input type="text" class="form-control" name="street" id="street">
+              </div>
+              <div class="form-group">
+                <label for="zip">Zip Code</label>
+                <input type="text" class="form-control" name="zip" id="zip">
+              </div>
+              <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" class="form-control" name="city" id="city">
+              </div>
+
+              <!-- Allow form submission with keyboard without duplicating the dialog button -->
+              <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <button type="button" id="savebtn" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- End of HTML for ABOUT Page -->
+
+      <!-- Modal Delete Person -->
+      <div class="modal fade" id="myDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myDeleteModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div id="header" class="modal-header">
+
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="id">
+              <div class="form-group">
+                <label for="personID">Person ID</label>
+                <input type="text" class="form-control" id="personID">
+              </div>
+              <!-- Allow form submission with keyboard without duplicating the dialog button -->
+              <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <button type="button" id="savebtnDelete" class="btn btn-primary" data-dismiss="modal">Delete Person</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Modal Edit Person -->
+      <div class="modal fade" id="myEditModal" tabindex="-1" role="dialog" aria-labelledby="myEditModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div id="header" class="modal-header">
+
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="id">
+              <div class="form-group">
+                <label for="personID" class="mt-3 font-weight-bold">Person ID</label>
+                <input type="text" class="form-control" id="personIDEdit">
+              </div>
+
+              <label for="info" class="mt-3 font-weight-bold">Edit the following:</label>
+
+              <div class="form-group">
+                <label for="firstname">First Name</label>
+                <input type="text" class="form-control" id="firstnameEdit">
+              </div>
+              <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input type="text" class="form-control" name="lastname" id="lastnameEdit">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" name="phone" id="phoneEdit">
+              </div>
+              <div class="form-group">
+                <label for="street">Street</label>
+                <input type="text" class="form-control" name="street" id="streetEdit">
+              </div>
+              <div class="form-group">
+                <label for="zip">Zip Code</label>
+                <input type="text" class="form-control" name="zip" id="zipEdit">
+              </div>
+              <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" class="form-control" name="city" id="cityEdit">
+              </div>
+
+
+              <!-- Allow form submission with keyboard without duplicating the dialog button -->
+              <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <button type="button" id="savebtnEdit" class="btn btn-primary" data-dismiss="modal">Edit Person</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-4">
+          <form>
+            <div class="form-group">
+              <label for="phonenumber">Find person by number</label>
+              <input type="number" class="form-control" id="phonenumberInput" aria-describedby="phonenumberHelp" placeholder="Enter phonenumber">
+              <small id="hobbyInputHelp" class="form-text text-muted">Search by a persons number</small>
+            </div>
+            <button type="submit" id="searchPersonByPhonebtn" class="btn btn-primary">Find Person</button>
+          </form>
+        </div>
+        <div class="col-4">
+          <form>
+            <div class="form-group">
+              <label for="hobbyLabel">Find persons by hobby</label>
+              <input type="text" class="form-control" id="hobbyInput" aria-describedby="hobbyInputHelp" placeholder="Enter hobby">
+              <small id="hobbyInputHelp" class="form-text text-muted">
+                Search by words such as "Dance" or "Football"
+              </small>
+            </div>
+            <button type="submit" id="searchPersonByPhonebtn" class="btn btn-primary">Find Persons</button>
+          </form>
+        </div>
+        <div class="col-4">
+          <form>
+            <div class="form-group">
+              <label for="hobbyLabel">Find number of people who practice a specific hobby</label>
+              <input type="text" class="form-control" id="hobbyCountInput" aria-describedby="hobbyCountInputHelp" placeholder="Enter hobby">
+              <small id="hobbyCountInputHelp" class="form-text text-muted">
+                Search by words such as "Dance" or "Football"
+              </small>
+            </div>
+            <button type="submit" id="searchPersonByPhonebtn" class="btn btn-primary">Get number of people</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- </div> -->
+      <!-- End of HTML for search -->
 
     </div>
+
+    <!---- HTML for the Home page -->
+    <div id="home_html" style="display:none;">
+      <h3>Home</h3>
+      <p>Watch the small video given as intro to this code, BEFORE you start using it</p>
+    </div>
+    <!-- End of HTML for Home Page -->
+
 
     <!--End of all content -->
   </div>
